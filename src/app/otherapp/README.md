@@ -1,10 +1,10 @@
 # コンポーネント開発ガイドライン
 
-本書はフロントエンド層（`koto-asobiba-front/app/src/`）に存在する
+本書はフロントエンド層（`my-next-app/src/`）に存在する
 
-* `component/`
+* `app/otherapp`
 * `hook/`
-* `pages/meibo-app/`
+* `components/`
 
 の 3 つのディレクトリを横断する **コンポーネント設計 / 実装ルール** をまとめたものです。
 実装を開始する前に必ず一読し、記載内容を満たしていることを確認してください。
@@ -15,18 +15,17 @@
 
 | ディレクトリ | 役割 | 依存関係 |
 |--------------|------|-----------|
-| `component/atoms`      | 最小単位の再利用 UI。色・余白を含め **単独で意味がある** もの。 | 外部 UI ライブラリのみ |
-| `component/molecules`  | 複数の Atom を組み合わせて 1 つの入力やカードを表す。 | Atoms |
-| `component/organisms`  | 複数の Molecule / Atom を組み合わせてセクションを形成。API 呼び出しは **行わない**。 | Molecules / Atoms |
-| `component/templates`  | ページ共通レイアウト。ヘッダーやナビゲーションを含む。 | Organisms 以下 |
-| `component/pages`      | 画面のロジック層。テンプレートを組み合わせ、Hook でデータを取得。 | Templates 以下 / Hooks |
+| `components/atoms`      | 最小単位の再利用 UI。色・余白を含め **単独で意味がある** もの。 | 外部 UI ライブラリのみ |
+| `components/molecules`  | 複数の Atom を組み合わせて 1 つの入力やカードを表す。 | Atoms |
+| `components/organisms`  | 複数の Molecule / Atom を組み合わせてセクションを形成。API 呼び出しは **行わない**。 | Molecules / Atoms |
+| `components/templates`  | ページ共通レイアウト。ヘッダーやナビゲーションを含む。 | Organisms 以下 |
+| `components/pages`      | 画面のロジック層。テンプレートを組み合わせ、Hook でデータを取得。 | Templates 以下 / Hooks |
 | `hook/meibo-app`       | 業務ドメイン固有のカスタム Hook。`useEmployees` など。 | axios・外部 API |
-| `hook/render-hook`     | 画面描画専用の小さな Hook。UI の開閉状態など。 | 依存なし |
-| `pages/meibo-app`      | Next.js pages ルーターのエントリ。URL ごとのページコンポーネント。 | component/pages 以下 |
+| `app/otherapp`      | Next.js pages ルーターのエントリ。URL ごとのページコンポーネント。 | components/pages 以下 |
 
 > 原則として **上位層が下位層にのみ依存** します。逆依存は不可。
 >
-> pages → component/pages → templates → organisms → molecules → atoms
+> app/otherapp → components/pages → templates → organisms → molecules → atoms
 
 ---
 
