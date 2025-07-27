@@ -1,0 +1,76 @@
+.order-layout {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-layout-header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.order-layout-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order-layout-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.order-layout-subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #6b7280;
+  margin: 0;
+}
+
+.order-layout-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.order-layout-main {
+  flex: 1;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .order-layout-header {
+    padding: 12px 16px;
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .order-layout-title {
+    font-size: 20px;
+  }
+  
+  .order-layout-subtitle {
+    font-size: 14px;
+  }
+  
+  .order-layout-main {
+    padding: 16px;
+  }
+  
+  .order-layout-actions {
+    justify-content: center;
+  }
+} 
