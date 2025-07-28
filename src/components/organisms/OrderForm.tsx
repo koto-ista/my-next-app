@@ -24,6 +24,9 @@ const OrderForm: React.FC<OrderFormProps> = ({
     productName: '',
     quantity: '',
     price: '',
+    purchaseCost: '',
+    purchaseDate: '',
+    previousOwner: '',
     orderDate: '',
     status: 'pending' as Order['status']
   });
@@ -37,6 +40,9 @@ const OrderForm: React.FC<OrderFormProps> = ({
         productName: order.productName,
         quantity: order.quantity.toString(),
         price: order.price.toString(),
+        purchaseCost: order.purchaseCost?.toString() || '',
+        purchaseDate: order.purchaseDate || '',
+        previousOwner: order.previousOwner || '',
         orderDate: order.orderDate,
         status: order.status
       });
@@ -62,6 +68,14 @@ const OrderForm: React.FC<OrderFormProps> = ({
       newErrors.price = '単価は0以上である必要があります';
     }
 
+    if (!formData.purchaseCost || parseInt(formData.purchaseCost) < 0) {
+      newErrors.purchaseCost = '仕入れ価格は0以上である必要があります';
+    }
+
+    if (!formData.purchaseDate) {
+      newErrors.purchaseDate = '仕入れ日は必須です';
+    }
+
     if (!formData.orderDate) {
       newErrors.orderDate = '注文日は必須です';
     }
@@ -79,6 +93,9 @@ const OrderForm: React.FC<OrderFormProps> = ({
         productName: formData.productName,
         quantity: parseInt(formData.quantity),
         price: parseInt(formData.price),
+        purchaseCost: parseInt(formData.purchaseCost),
+        purchaseDate: formData.purchaseDate,
+        previousOwner: formData.previousOwner,
         orderDate: formData.orderDate,
         status: formData.status
       });
@@ -115,7 +132,7 @@ const OrderForm: React.FC<OrderFormProps> = ({
   return (
     <div className={styles['order-form-container']}>
       <div className={styles['order-form-header']}>
-        <h2>{mode === 'create' ? '新規注文作成' : '注文編集'}</h2>
+        <h2 className={styles['order-form-title']}>{mode === 'create' ? '新規注文作成' : '注文編集'}</h2>
         <span 
           className={styles['order-form-status']}
           style={{ backgroundColor: getStatusColor(formData.status) }}
@@ -186,6 +203,36 @@ const OrderForm: React.FC<OrderFormProps> = ({
                 error={errors.price}
               />
               
+              <FormField
+                fieldName="purchaseCost"
+                label="仕入れ価格"
+                type="number"
+                value={formData.purchaseCost}
+                onChange={(value) => handleInputChange('purchaseCost', value)}
+                placeholder="仕入れ価格を入力"
+                required
+                error={errors.purchaseCost}
+              />
+
+              <FormField
+                fieldName="purchaseDate"
+                label="仕入れ日"
+                type="date"
+                value={formData.purchaseDate}
+                onChange={(value) => handleInputChange('purchaseDate', value)}
+                required
+                error={errors.purchaseDate}
+              />
+
+              <FormField
+                fieldName="previousOwner"
+                label="前所有者"
+                value={formData.previousOwner}
+                onChange={(value) => handleInputChange('previousOwner', value)}
+                placeholder="前所有者を入力"
+                error={errors.previousOwner}
+              />
+
               <div className={styles['order-form-item']}>
                 <label>合計金額</label>
                 <span className={styles['order-form-total']}>

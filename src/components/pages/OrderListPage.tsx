@@ -10,7 +10,7 @@ import styles from './OrderListPage.module.css';
 
 const OrderListPage: React.FC = () => {
   const router = useRouter();
-  const { orders, deleteOrder } = useOrders();
+  const { orders, deleteOrder, resetToInitialData } = useOrders();
   const [deleteModal, setDeleteModal] = useState<{
     isOpen: boolean;
     orderId: string | null;
@@ -63,6 +63,12 @@ const OrderListPage: React.FC = () => {
     router.push('/otherapp/add');
   };
 
+  const handleReset = () => {
+    if (confirm('localStorageの注文データを初期状態にリセットします。よろしいですか？')) {
+      resetToInitialData();
+    }
+  };
+
   return (
     <>
       <OrderLayout
@@ -71,6 +77,9 @@ const OrderListPage: React.FC = () => {
         onButtonClick={handleAddOrder}
       >
         <div className={styles['order-list-container']}>
+          <div style={{ textAlign: 'right', marginBottom: '8px' }}>
+            <button className="retro-btn" onClick={handleReset}>データリセット</button>
+          </div>
           {orders.length === 0 ? (
             <div className={styles['order-list-empty']}>
               <p>注文データがありません</p>

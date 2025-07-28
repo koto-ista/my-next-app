@@ -8,6 +8,9 @@ export interface Order {
   productName: string;
   quantity: number;
   price: number;
+  purchaseCost: number;
+  purchaseDate: string;
+  previousOwner: string;
   orderDate: string;
   status: 'pending' | 'processing' | 'completed' | 'cancelled';
 }
@@ -45,6 +48,9 @@ const initialOrders: Order[] = [
     productName: 'ノートパソコン',
     quantity: 1,
     price: 150000,
+    purchaseCost: 140000,
+    purchaseDate: '2024-01-14',
+    previousOwner: '山田花子',
     orderDate: '2024-01-15',
     status: 'completed'
   },
@@ -54,6 +60,9 @@ const initialOrders: Order[] = [
     productName: 'スマートフォン',
     quantity: 2,
     price: 80000,
+    purchaseCost: 75000,
+    purchaseDate: '2024-01-15',
+    previousOwner: '鈴木一郎',
     orderDate: '2024-01-16',
     status: 'processing'
   },
@@ -63,6 +72,9 @@ const initialOrders: Order[] = [
     productName: 'タブレット',
     quantity: 1,
     price: 50000,
+    purchaseCost: 45000,
+    purchaseDate: '2024-01-16',
+    previousOwner: '田中太郎',
     orderDate: '2024-01-17',
     status: 'pending'
   }

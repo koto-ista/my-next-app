@@ -1,0 +1,54 @@
+/* globals-myapp.css - 昭和レトロスタイル */
+
+:root {
+  --retro-bg: #fdf6e3; /* 生成色 (生成用に明るいクリーム) */
+  --retro-primary: #c73e1d; /* 朱色 */
+  --retro-secondary: #33658a; /* くすんだブルー */
+  --retro-accent: #f4b41a; /* からし色 */
+  --retro-border: #b3a580; /* くすんだブラウン */
+  --retro-text: #3c3c3c; /* ダークグレー */
+  --retro-font-family: 'Noto Serif JP', serif;
+}
+
+body.myapp {
+  background: var(--retro-bg);
+  font-family: var(--retro-font-family);
+  color: var(--retro-text);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--retro-font-family);
+  font-weight: 600;
+  color: var(--retro-primary);
+}
+
+button.retro-btn {
+  padding: 10px 20px;
+  border: 2px solid var(--retro-border);
+  background: var(--retro-primary);
+  color: white;
+  font-family: var(--retro-font-family);
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+button.retro-btn:hover {
+  transform: translateY(-2px);
+}
+
+.retro-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background: white;
+}
+.retro-table th,
+.retro-table td {
+  border: 1px solid var(--retro-border);
+  padding: 8px 12px;
+  text-align: left;
+}
+.retro-table th {
+  background: var(--retro-secondary);
+  color: white;
+} 

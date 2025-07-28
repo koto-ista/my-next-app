@@ -66,7 +66,7 @@ const OrderDetailPage: React.FC<OrderDetailPageProps> = ({ orderId }) => {
     >
       <div className={styles['order-detail-container']}>
         <div className={styles['order-detail-header']}>
-          <h2>注文番号: {order.id}</h2>
+          <h2 className={styles['order-detail-title']}>注文番号: {order.id}</h2>
           <span 
             className={styles['order-detail-status']}
             style={{ backgroundColor: getStatusColor(order.status) }}
@@ -104,6 +104,18 @@ const OrderDetailPage: React.FC<OrderDetailPageProps> = ({ orderId }) => {
               <div className={styles['order-detail-item']}>
                 <label>単価</label>
                 <span>¥{order.price.toLocaleString()}</span>
+              </div>
+              <div className={styles['order-detail-item']}>
+                <label>仕入れ価格</label>
+                <span>¥{order.purchaseCost.toLocaleString()}</span>
+              </div>
+              <div className={styles['order-detail-item']}>
+                <label>仕入れ日</label>
+                <span>{order.purchaseDate}</span>
+              </div>
+              <div className={styles['order-detail-item']}>
+                <label>前所有者</label>
+                <span>{order.previousOwner}</span>
               </div>
               <div className={styles['order-detail-item']}>
                 <label>合計金額</label>

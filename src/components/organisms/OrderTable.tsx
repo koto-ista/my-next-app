@@ -46,10 +46,10 @@ const OrderTable: React.FC<OrderTableProps> = ({
             <th>注文番号</th>
             <th>顧客名</th>
             <th>商品名</th>
-            <th>数量</th>
-            <th>単価</th>
-            <th>合計</th>
-            <th>注文日</th>
+            {/* <th>数量</th> */}
+            {/* <th>単価</th> */}
+            {/* <th>合計</th> */}
+            {/* <th>注文日</th> */}
             <th>ステータス</th>
             <th>操作</th>
           </tr>
@@ -60,10 +60,10 @@ const OrderTable: React.FC<OrderTableProps> = ({
               <td>{order.id}</td>
               <td>{order.customerName}</td>
               <td>{order.productName}</td>
-              <td>{order.quantity}</td>
-              <td>¥{order.price.toLocaleString()}</td>
-              <td className={styles['order-table-total']}>¥{(order.quantity * order.price).toLocaleString()}</td>
-              <td>{order.orderDate}</td>
+              {/* <td>{order.quantity}</td> */}
+              {/* <td>¥{order.price.toLocaleString()}</td> */}
+              {/* <td className={styles['order-table-total']}>¥{(order.quantity * order.price).toLocaleString()}</td> */}
+              {/* <td>{order.orderDate}</td> */}
               <td>
                 <span 
                   className={styles['order-table-status']}
